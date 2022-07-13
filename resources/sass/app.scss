@@ -1,1 +1,36 @@
-//
+@import 'partials/_reset';
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px;
+}
+
+header {
+    text-align: center;
+
+    li {
+        display: inline-block
+    };
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: .5rem;
+    }
+
+    a:hover {
+        background-color: blue;
+    }
+
+    .active {
+        background-color: blueviolet;
+    }
+}
+
+footer {
+    .montagne {
+        height: 5rem;
+        background-image: url('/images/footer-montagne-bottom.jpg');
+    }
+}

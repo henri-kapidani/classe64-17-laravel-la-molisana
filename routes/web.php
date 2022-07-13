@@ -13,8 +13,68 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('home', [
-        'arrPaste'  => config('pasta'),
-    ]);
+    return view('home');
 })->name('home');
+
+
+Route::get('/prodotti', function () {
+    $arrPaste = config('pasta');
+
+    /*
+    [
+        'type1'  => [
+            [],
+            [], ...
+        ],
+        'type2'  => [
+            [],
+            [],
+            [], ...
+        ],
+        ...
+    ]
+    */
+
+    $arr_separato = [];
+    foreach ($arrPaste as $pasta) {
+        if (!isset($arr_separato[$pasta['tipo']])) {
+            $arr_separato[$pasta['tipo']] = [];
+        }
+        $arr_separato[$pasta['tipo']][] = $pasta;
+    }
+    // dd($arr_separato);
+
+    return view('prodotti', [
+        'pageTitle' => 'Prodotti - La Molisana',
+        'arrPaste'  => $arr_separato,
+    ]);
+})->name('prodotti');
+
+
+Route::get('/news', function () {
+    return view('news', [
+        'pageTitle' => 'News - La Molisana'
+    ]);
+})->name('news');
+
+
+Route::get('/prodotti/{id}', function ($id) {
+    $pasta = null;
+    foreach (config('pasta') as $value) {
+        if ($value['id'] == $id) {
+            $pasta = $value;
+            break;
+        }
+    }
+
+    if ($pasta) {
+        return view('prodotto', [
+            'pageTitle' => 'Prodotto - La Molisana',
+            'pasta'     => $pasta,
+        ]);
+    } else {
+        abort(404);
+    }
+})->name('prodotto');

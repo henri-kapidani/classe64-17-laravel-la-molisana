@@ -4,10 +4,6 @@
 
 @section('pageMain')
     <main>
-        <ul>
-            @foreach ($arrPaste as $pasta)
-                <li>{{ $pasta['titolo'] }}</li>
-            @endforeach
-        </ul>
+        <h1>Ciao benvenuti nel sito della Molisana</h1>
     </main>
 @endsection
