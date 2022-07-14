@@ -6,11 +6,11 @@
                 @foreach (config('menu') as $menuItem)
                     {{-- <li><a class="{{ Route::currentRouteName() === $menuItem['route'] ? 'active' : '' }}" href="{{ route($menuItem['route']) }}">{{ $menuItem['label'] }}</a></li> --}}
                     <li><a class="
-                        @if (Route::currentRouteName() === $menuItem['route'])
+                        @if (in_array(Route::currentRouteName(), $menuItem['route']))
                             active
                         @endif
                     "
-                    href="{{ route($menuItem['route']) }}">{{ $menuItem['label'] }}</a></li>
+                    href="{{ route($menuItem['route'][0]) }}">{{ $menuItem['label'] }}</a></li>
                 @endforeach
             </ul>
         </nav>

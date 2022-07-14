@@ -2,15 +2,15 @@
 
 return [
     [
-        'route' => 'home',
+        'route' => ['home'],
         'label' => 'Home',
     ],
     [
-        'route' => 'prodotti',
+        'route' => ['prodotti', 'prodotto'],
         'label' => 'Prodotti',
     ],
     [
-        'route' => 'news',
+        'route' => ['news'],
         'label' => 'News',
     ],
 ];

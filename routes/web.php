@@ -61,6 +61,7 @@ Route::get('/news', function () {
 
 
 Route::get('/prodotti/{id}', function ($id) {
+    // dd(Route::currentRouteName());
     $pasta = null;
     foreach (config('pasta') as $value) {
         if ($value['id'] == $id) {
